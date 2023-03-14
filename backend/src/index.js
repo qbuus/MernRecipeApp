@@ -11,6 +11,8 @@ const app = express();
 app.use(express.json());
 app.use(cors);
 
+mongoose.connect(process.env.MONGO_CONNECTION_STRING);
+
 app.listen(SERVERPORT, () => {
   console.log(`server started on Port ${SERVERPORT}`);
 });
