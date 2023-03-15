@@ -25,20 +25,20 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/", async (req, res) => {
+  const recipe = await RecipeModel.findById(req.body.recipeID);
+  const user = await UserModel.findById(req.body.userID);
   try {
-    const recipe = await RecipeModel.findById(req.body.recipeID);
-    const user = await UserModel.findById(req.body.userID);
     user.savedRecipes.push(recipe);
     await user.save();
-    res.json({ savedRecipes: user.savedRecipes });
-  } catch (error) {
-    console.error(error);
+    res.status(201).json({ savedRecipes: user.savedRecipes });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
-router.get("/savedRecipes/ids", async (req, res) => {
+router.get("/savedRecipes/ids/:userID", async (req, res) => {
   try {
-    const user = await UserModel.findById(req.body.userID);
+    const user = await UserModel.findById(req.params.userID);
     res.json({ savedRecipes: user?.savedRecipes });
   } catch (error) {
     console.error(error);

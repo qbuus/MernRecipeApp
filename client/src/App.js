@@ -4,7 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Home from "./pages/Home";
+import { Home } from "./pages/Home";
 import Auth from "./pages/Auth";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import SavedRecipesPage from "./pages/SavedRecipesPage";
@@ -12,7 +12,7 @@ import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Router>
         <NavBar />
         <Routes>
