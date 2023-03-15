@@ -7,7 +7,7 @@ import {
 import { Home } from "./pages/Home";
 import Auth from "./pages/Auth";
 import CreateRecipePage from "./pages/CreateRecipePage";
-import SavedRecipesPage from "./pages/SavedRecipesPage";
+import { SavedRecipePage } from "./pages/SavedRecipesPage";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -22,10 +22,7 @@ function App() {
             path="/createRecipe"
             element={<CreateRecipePage />}
           />
-          <Route
-            path="/savedRecipes"
-            element={<SavedRecipesPage />}
-          />
+          <Route path="/savedRecipes" element={<SavedRecipePage />} />
         </Routes>
       </Router>
     </div>
