@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useGetUserId from "../hooks/useGetUserId.js";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 export const Home = () => {
+  const [cookies, _] = useCookies();
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
 
@@ -42,7 +44,8 @@ export const Home = () => {
         {
           recipeID,
           userID,
-        }
+        },
+        { headers: { authorization: cookies.access_token } }
       );
       setSavedRecipes(response.data.savedRecipes);
     } catch (err) {
